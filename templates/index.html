@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Math Challenge</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- ================================================= -->
+    <!-- PENGATURAN GAME -->
+    <!-- ================================================= -->
+
+    <div id="menu"
+         class="card">
+
+
+        <div class="logo">
+            🧠
+        </div>
+
+
+        <h1>
+            MATH CHALLENGE
+        </h1>
+
+
+        <p class="subtitle">
+            Atur permainan sebelum mulai
+        </p>
+
+
+
+        <!-- ============================================= -->
+        <!-- JENIS SOAL -->
+        <!-- ============================================= -->
+
+        <div class="setting">
+
+
+            <label>
+                📝 PILIH JENIS SOAL
+            </label>
+
+
+            <select id="jenisSoal">
+
+
+                <option value="+">
+                    ➕ Penjumlahan
+                </option>
+
+
+                <option value="-">
+                    ➖ Pengurangan
+                </option>
+
+
+                <option value="×">
+                    ✖️ Perkalian
+                </option>
+
+
+                <option value="campuran">
+                    🔀 Campuran
+                </option>
+
+
+            </select>
+
+
+        </div>
+
+
+
+        <!-- ============================================= -->
+        <!-- JUMLAH SOAL -->
+        <!-- ============================================= -->
+
+        <div class="setting">
+
+
+            <label>
+                📋 JUMLAH SOAL
+            </label>
+
+
+            <select id="jumlahSoal">
+
+
+                <option value="10">
+                    10 Soal
+                </option>
+
+
+                <option value="20" selected>
+                    20 Soal
+                </option>
+
+
+                <option value="30">
+                    30 Soal
+                </option>
+
+
+                <option value="50">
+                    50 Soal
+                </option>
+
+
+            </select>
+
+
+        </div>
+
+
+
+        <!-- ============================================= -->
+        <!-- WAKTU -->
+        <!-- ============================================= -->
+
+        <div class="setting">
+
+
+            <label>
+                ⏱️ PILIH WAKTU
+            </label>
+
+
+            <select id="waktuGame">
+
+
+                <option value="30">
+                    30 Detik
+                </option>
+
+
+                <option value="60" selected>
+                    1 Menit
+                </option>
+
+
+                <option value="120">
+                    2 Menit
+                </option>
+
+
+                <option value="300">
+                    5 Menit
+                </option>
+
+
+            </select>
+
+
+        </div>
+
+
+
+        <!-- ============================================= -->
+        <!-- TOMBOL MULAI -->
+        <!-- ============================================= -->
+
+        <button class="mulai-btn"
+                onclick="mulaiGame()">
+
+            🚀 MULAI GAME
+
+        </button>
+
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- GAME -->
+    <!-- ================================================= -->
+
+    <div id="game"
+         class="game-card hidden">
+
+
+        <!-- ============================================= -->
+        <!-- HEADER GAME -->
+        <!-- ============================================= -->
+
+        <div class="game-header">
+
+
+            <div class="info-box">
+
+
+                <span>
+                    WAKTU
+                </span>
+
+
+                <strong id="timer">
+                    01:00
+                </strong>
+
+
+            </div>
+
+
+
+            <div class="info-box">
+
+
+                <span>
+                    SOAL
+                </span>
+
+
+                <strong>
+
+                    <span id="soalSekarang">
+                        1
+                    </span>
+
+                    /
+
+                    <span id="totalSoal">
+                        20
+                    </span>
+
+                </strong>
+
+
+            </div>
+
+
+
+            <div class="info-box">
+
+
+                <span>
+                    SKOR
+                </span>
+
+
+                <strong id="skor">
+                    0
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ============================================= -->
+        <!-- SOAL -->
+        <!-- ============================================= -->
+
+        <div class="question-box">
+
+
+            <p>
+                Berapa hasilnya?
+            </p>
+
+
+            <div class="question">
+
+
+                <span id="angka1">
+                    0
+                </span>
+
+
+                <span id="operasi">
+                    +
+                </span>
+
+
+                <span id="angka2">
+                    0
+                </span>
+
+
+            </div>
+
+
+            <!-- JAWABAN -->
+
+            <div class="jawaban">
+
+                <span id="jawabanUser">
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ============================================= -->
+        <!-- KEYPAD -->
+        <!-- ============================================= -->
+
+        <div class="keypad">
+
+
+            <button onclick="masukkanAngka(1)">
+                1
+            </button>
+
+
+            <button onclick="masukkanAngka(2)">
+                2
+            </button>
+
+
+            <button onclick="masukkanAngka(3)">
+                3
+            </button>
+
+
+
+            <button onclick="masukkanAngka(4)">
+                4
+            </button>
+
+
+            <button onclick="masukkanAngka(5)">
+                5
+            </button>
+
+
+            <button onclick="masukkanAngka(6)">
+                6
+            </button>
+
+
+
+            <button onclick="masukkanAngka(7)">
+                7
+            </button>
+
+
+            <button onclick="masukkanAngka(8)">
+                8
+            </button>
+
+
+            <button onclick="masukkanAngka(9)">
+                9
+            </button>
+
+
+
+            <!-- HAPUS -->
+
+            <button onclick="hapusAngka()"
+                    class="hapus">
+
+                ⌫
+
+            </button>
+
+
+            <!-- ANGKA 0 -->
+
+            <button onclick="masukkanAngka(0)">
+                0
+            </button>
+
+
+            <!-- SUDAH -->
+
+            <button onclick="kirimJawaban()"
+                    class="sudah">
+
+                ✓ SUDAH
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- PESAN -->
+
+        <div id="pesan"
+             class="pesan">
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- HASIL -->
+    <!-- ================================================= -->
+
+    <div id="hasil"
+         class="card hidden">
+
+
+        <div class="trophy">
+            🏆
+        </div>
+
+
+        <h1>
+            GAME SELESAI!
+        </h1>
+
+
+        <p class="subtitle">
+            Hasil permainan kamu
+        </p>
+
+
+
+        <div class="hasil-score">
+
+
+            <span>
+                SKOR KAMU
+            </span>
+
+
+            <strong>
+
+                <span id="skorAkhir">
+                    0
+                </span>
+
+                /
+
+                <span id="totalSoalAkhir">
+                    20
+                </span>
+
+            </strong>
+
+
+        </div>
+
+
+
+        <div id="pesanAkhir"
+             class="pesan-akhir">
+
+        </div>
+
+
+
+        <button class="mulai-btn"
+                onclick="location.reload()">
+
+            🔄 MAIN LAGI
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+// =====================================================
+// VARIABEL
+// =====================================================
+
+let soalKe = 1;
+
+let totalSoal = 20;
+
+let skor = 0;
+
+let jawabanUser = "";
+
+let jawabanBenar = "";
+
+let waktu = 60;
+
+let timerInterval;
+
+let gameAktif = false;
+
+let sedangMemeriksa = false;
+
+let jenisSoal = "campuran";
+
+
+// =====================================================
+// MULAI GAME
+// =====================================================
+
+function mulaiGame() {
+
+
+    // Ambil pengaturan
+
+    jenisSoal =
+        document.getElementById("jenisSoal").value;
+
+
+    totalSoal =
+        parseInt(
+            document.getElementById("jumlahSoal").value
+        );
+
+
+    waktu =
+        parseInt(
+            document.getElementById("waktuGame").value
+        );
+
+
+    // Reset
+
+    soalKe = 1;
+
+    skor = 0;
+
+
+    gameAktif = true;
+
+
+    sedangMemeriksa = false;
+
+
+    // Sembunyikan menu
+
+    document.getElementById("menu")
+        .classList.add("hidden");
+
+
+    // Tampilkan game
+
+    document.getElementById("game")
+        .classList.remove("hidden");
+
+
+    // Tampilkan data
+
+    document.getElementById("skor")
+        .innerText = skor;
+
+
+    document.getElementById("soalSekarang")
+        .innerText = soalKe;
+
+
+    document.getElementById("totalSoal")
+        .innerText = totalSoal;
+
+
+    // Tampilkan timer
+
+    updateTimer();
+
+
+    // Mulai timer
+
+    mulaiTimer();
+
+
+    // Ambil soal
+
+    ambilSoal();
+
+}
+
+
+// =====================================================
+// TIMER
+// =====================================================
+
+function mulaiTimer() {
+
+
+    clearInterval(timerInterval);
+
+
+    timerInterval =
+        setInterval(function() {
+
+
+            waktu--;
+
+
+            updateTimer();
+
+
+            if (waktu <= 0) {
+
+
+                clearInterval(timerInterval);
+
+
+                gameSelesai();
+
+
+            }
+
+
+        }, 1000);
+
+}
+
+
+// =====================================================
+// UPDATE TIMER
+// =====================================================
+
+function updateTimer() {
+
+
+    let menit =
+        Math.floor(waktu / 60);
+
+
+    let detik =
+        waktu % 60;
+
+
+    document.getElementById("timer")
+        .innerText =
+
+
+        String(menit).padStart(2, "0")
+
+        +
+
+        ":"
+
+        +
+
+        String(detik).padStart(2, "0");
+
+
+}
+
+
+// =====================================================
+// AMBIL SOAL
+// =====================================================
+
+function ambilSoal() {
+
+
+    jawabanUser = "";
+
+
+    sedangMemeriksa = false;
+
+
+    document.getElementById("jawabanUser")
+        .innerText = "";
+
+
+    document.getElementById("pesan")
+        .innerText = "";
+
+
+    document.getElementById("pesan")
+        .className = "pesan";
+
+
+    fetch(
+        "/soal?jenis=" +
+        encodeURIComponent(jenisSoal)
+    )
+
+
+    .then(response => response.json())
+
+
+    .then(data => {
+
+
+        document.getElementById("angka1")
+            .innerText = data.angka1;
+
+
+        document.getElementById("angka2")
+            .innerText = data.angka2;
+
+
+        document.getElementById("operasi")
+            .innerText = data.operasi;
+
+
+        jawabanBenar =
+            String(data.jawaban);
+
+
+    });
+
+
+}
+
+
+// =====================================================
+// MASUKKAN ANGKA
+// =====================================================
+
+function masukkanAngka(angka) {
+
+
+    if (!gameAktif) {
+        return;
+    }
+
+
+    if (sedangMemeriksa) {
+        return;
+    }
+
+
+    // Maksimal 3 digit
+
+    if (jawabanUser.length >= 3) {
+        return;
+    }
+
+
+    // Tidak boleh 0 di awal
+
+    if (
+        jawabanUser === ""
+        &&
+        angka === 0
+    ) {
+
+        return;
+
+    }
+
+
+    jawabanUser += angka;
+
+
+    document.getElementById("jawabanUser")
+        .innerText = jawabanUser;
+
+
+}
+
+
+// =====================================================
+// HAPUS
+// =====================================================
+
+function hapusAngka() {
+
+
+    if (!gameAktif) {
+        return;
+    }
+
+
+    if (sedangMemeriksa) {
+        return;
+    }
+
+
+    jawabanUser =
+        jawabanUser.slice(0, -1);
+
+
+    document.getElementById("jawabanUser")
+        .innerText = jawabanUser;
+
+
+}
+
+
+// =====================================================
+// KIRIM JAWABAN
+// =====================================================
+
+function kirimJawaban() {
+
+
+    if (!gameAktif) {
+        return;
+    }
+
+
+    if (sedangMemeriksa) {
+        return;
+    }
+
+
+    if (jawabanUser === "") {
+
+
+        tampilPesan(
+            "Masukkan jawaban terlebih dahulu!",
+            false
+        );
+
+
+        return;
+
+    }
+
+
+    cekJawaban();
+
+}
+
+
+// =====================================================
+// CEK JAWABAN
+// =====================================================
+
+function cekJawaban() {
+
+
+    sedangMemeriksa = true;
+
+
+    if (
+        jawabanUser === jawabanBenar
+    ) {
+
+
+        skor++;
+
+
+        document.getElementById("skor")
+            .innerText = skor;
+
+
+        tampilPesan(
+            "BENAR! 🎉",
+            true
+        );
+
+
+    }
+
+    else {
+
+
+        tampilPesan(
+            "SALAH! ❌",
+            false
+        );
+
+
+    }
+
+
+    // Tunggu sebentar
+
+    setTimeout(function() {
+
+
+        if (!gameAktif) {
+            return;
+        }
+
+
+        if (soalKe >= totalSoal) {
+
+
+            gameSelesai();
+
+
+            return;
+
+        }
+
+
+        soalKe++;
+
+
+        document.getElementById("soalSekarang")
+            .innerText = soalKe;
+
+
+        ambilSoal();
+
+
+    }, 500);
+
+}
+
+
+// =====================================================
+// PESAN
+// =====================================================
+
+function tampilPesan(teks, benar) {
+
+
+    const pesan =
+        document.getElementById("pesan");
+
+
+    pesan.innerText = teks;
+
+
+    if (benar) {
+
+
+        pesan.className =
+            "pesan benar";
+
+
+    }
+
+    else {
+
+
+        pesan.className =
+            "pesan salah";
+
+
+    }
+
+}
+
+
+// =====================================================
+// ENTER
+// =====================================================
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+
+        if (event.key === "Enter") {
+
+
+            event.preventDefault();
+
+
+            kirimJawaban();
+
+
+        }
+
+
+    }
+);
+
+
+// =====================================================
+// GAME SELESAI
+// =====================================================
+
+function gameSelesai() {
+
+
+    if (!gameAktif) {
+        return;
+    }
+
+
+    gameAktif = false;
+
+
+    clearInterval(timerInterval);
+
+
+    document.getElementById("game")
+        .classList.add("hidden");
+
+
+    document.getElementById("hasil")
+        .classList.remove("hidden");
+
+
+    document.getElementById("skorAkhir")
+        .innerText = skor;
+
+
+    document.getElementById("totalSoalAkhir")
+        .innerText = totalSoal;
+
+
+    let pesan;
+
+
+    if (skor === totalSoal) {
+
+
+        pesan =
+            "🔥 SEMPURNA! Semua jawaban benar!";
+
+
+    }
+
+    else if (
+        skor >= totalSoal * 0.75
+    ) {
+
+
+        pesan =
+            "🏆 LUAR BIASA!";
+
+
+    }
+
+    else if (
+        skor >= totalSoal * 0.5
+    ) {
+
+
+        pesan =
+            "👍 BAGUS! Terus tingkatkan!";
+
+
+    }
+
+    else {
+
+
+        pesan =
+            "💪 Jangan menyerah! Coba lagi!";
+
+
+    }
+
+
+    document.getElementById("pesanAkhir")
+        .innerText = pesan;
+
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
