@@ -1,0 +1,539 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #141e30,
+            #243b55
+        );
+
+    color: white;
+
+}
+
+
+.container {
+
+    width: 95%;
+
+    max-width: 600px;
+
+    text-align: center;
+
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ================================= */
+/* CARD */
+/* ================================= */
+
+.card,
+.game-card {
+
+    background: white;
+
+    color: #222;
+
+    border-radius: 25px;
+
+    padding: 35px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, 0.35);
+
+}
+
+
+/* ================================= */
+/* MENU */
+/* ================================= */
+
+.logo {
+
+    font-size: 65px;
+
+    margin-bottom: 10px;
+
+}
+
+
+h1 {
+
+    font-size: 32px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.subtitle {
+
+    color: #777;
+
+    margin-top: 10px;
+
+    margin-bottom: 25px;
+
+}
+
+
+/* ================================= */
+/* SETTING */
+/* ================================= */
+
+.setting {
+
+    text-align: left;
+
+    margin-bottom: 18px;
+
+}
+
+
+.setting label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: bold;
+
+    color: #333;
+
+}
+
+
+.setting select {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+    border: 2px solid #e0e5eb;
+
+    background: #f3f6fa;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    outline: none;
+
+}
+
+
+.setting select:focus {
+
+    border-color: #1677ff;
+
+}
+
+
+/* ================================= */
+/* TOMBOL MULAI */
+/* ================================= */
+
+.mulai-btn {
+
+    width: 100%;
+
+    padding: 17px;
+
+    margin-top: 10px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #1677ff;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+.mulai-btn:hover {
+
+    background: #005de8;
+
+}
+
+
+/* ================================= */
+/* HEADER GAME */
+/* ================================= */
+
+.game-header {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.info-box {
+
+    background: #f3f6fa;
+
+    border-radius: 12px;
+
+    padding: 12px;
+
+}
+
+
+.info-box span {
+
+    display: block;
+
+    font-size: 12px;
+
+    color: #777;
+
+    font-weight: bold;
+
+    margin-bottom: 5px;
+
+}
+
+
+.info-box strong {
+
+    font-size: 22px;
+
+    color: #1677ff;
+
+}
+
+
+/* ================================= */
+/* SOAL */
+/* ================================= */
+
+.question-box {
+
+    margin-bottom: 25px;
+
+}
+
+
+.question-box p {
+
+    color: #777;
+
+    margin-bottom: 15px;
+
+}
+
+
+.question {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 20px;
+
+    font-size: 55px;
+
+    font-weight: bold;
+
+    color: #1677ff;
+
+}
+
+
+/* ================================= */
+/* JAWABAN */
+/* ================================= */
+
+.jawaban {
+
+    margin-top: 20px;
+
+    height: 60px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 12px;
+
+    background: #f3f6fa;
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    color: #222;
+
+}
+
+
+/* ================================= */
+/* KEYPAD */
+/* ================================= */
+
+.keypad {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+
+}
+
+
+.keypad button {
+
+    height: 65px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #1677ff;
+
+    color: white;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.15s;
+
+}
+
+
+.keypad button:hover {
+
+    background: #005de8;
+
+    transform: scale(1.03);
+
+}
+
+
+.keypad button:active {
+
+    transform: scale(0.95);
+
+}
+
+
+/* ================================= */
+/* HAPUS */
+/* ================================= */
+
+.keypad .hapus {
+
+    background: #e53935;
+
+}
+
+
+.keypad .hapus:hover {
+
+    background: #c62828;
+
+}
+
+
+/* ================================= */
+/* SUDAH */
+/* ================================= */
+
+.keypad .sudah {
+
+    background: #16a34a;
+
+    font-size: 17px;
+
+}
+
+
+.keypad .sudah:hover {
+
+    background: #15803d;
+
+}
+
+
+/* ================================= */
+/* PESAN */
+/* ================================= */
+
+.pesan {
+
+    min-height: 30px;
+
+    margin-top: 15px;
+
+    font-weight: bold;
+
+}
+
+
+.pesan.benar {
+
+    color: #16a34a;
+
+}
+
+
+.pesan.salah {
+
+    color: #e53935;
+
+}
+
+
+/* ================================= */
+/* HASIL */
+/* ================================= */
+
+.trophy {
+
+    font-size: 70px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.hasil-score {
+
+    background: #f3f6fa;
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    margin: 25px 0;
+
+}
+
+
+.hasil-score span {
+
+    display: block;
+
+    color: #777;
+
+    font-weight: bold;
+
+}
+
+
+.hasil-score strong {
+
+    display: block;
+
+    margin-top: 10px;
+
+    font-size: 55px;
+
+    color: #1677ff;
+
+}
+
+
+.pesan-akhir {
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    margin-bottom: 25px;
+
+}
+
+
+/* ================================= */
+/* RESPONSIVE */
+/* ================================= */
+
+@media (max-width: 500px) {
+
+
+    .card,
+    .game-card {
+
+        padding: 25px 18px;
+
+    }
+
+
+    h1 {
+
+        font-size: 25px;
+
+    }
+
+
+    .question {
+
+        font-size: 42px;
+
+    }
+
+
+    .keypad button {
+
+        height: 58px;
+
+    }
+
+
+    .keypad .sudah {
+
+        font-size: 14px;
+
+    }
+
+}
